@@ -19,14 +19,14 @@ export default function Booking() {
             </div>
             <div className="flex gap-2">
                <div
-                  className="bg-white shadow-sm hover:shadow-md rounded-full 
-                  p-2  cursor-pointer"
+                  className="bg-white  flex items-center shadow-sm hover:shadow-md rounded-full 
+                  p-[10px] cursor-pointer"
                >
                   <RxDashboard />
                </div>
                <div
-                  className="bg-[#A162F7] text-white shadow-sm hover:shadow-md 
-                  rounded-full p-2 cursor-pointer "
+                  className="bg-[#A162F7]  flex items-center text-white shadow-sm hover:shadow-md 
+                  rounded-full p-[10px] cursor-pointer "
                >
                   <GiSettingsKnobs />
                </div>
@@ -46,7 +46,7 @@ function DropDownList({ options }) {
       <li>
          <div className="relative w-full lg:max-w-sm">
             <select
-               className="w-full py-1 px-3 text-gray-500 bg-white 
+               className="w-full py-2 px-5  text-gray-500 bg-white 
                rounded-full shadow-sm outline-none capitalize cursor-pointer "
             >
                {options.map((item, index) => (
