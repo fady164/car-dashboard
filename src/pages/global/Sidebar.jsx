@@ -1,15 +1,6 @@
 import React from "react";
-import { RxDashboard, RxCalendar } from "react-icons/rx";
-import { RiScissors2Line } from "react-icons/ri";
-import { CgProfile } from "react-icons/cg";
-import {
-   AiOutlineCar,
-   AiOutlineShoppingCart,
-   AiOutlineSetting,
-} from "react-icons/ai";
-import { BiMessageDetail, BiLogOut } from "react-icons/bi";
-import { BsBag } from "react-icons/bs";
 import { NavLink } from "react-router-dom";
+import { sidebarData } from "../../data/sidebarData";
 
 export default function Sidebar() {
    return (
@@ -18,23 +9,32 @@ export default function Sidebar() {
          w-[248px] h-screen px-[30px] py-[24px]"
       >
          <div className="flex flex-col gap-3">
-            <div>
+            <div className="flex gap-2">
+               <div className="flex justify-center items-center rounded-md px-[5px] py-[6px] bg-[#A162F7]">
+                  <img src="./logo.png" alt="" />
+               </div>
                <h3 className="font-bold text-2xl">Motiv. </h3>
             </div>
             <ul className="flex flex-col gap-3 ">
-               <Item icon={<RxDashboard />} title="Dashboard" />
-               <Item icon={<CgProfile />} title="Assets" />
-               <Item icon={<AiOutlineCar />} title="Booking" />
-               <Item icon={<BsBag />} title="Sell Cars" />
-               <Item icon={<AiOutlineShoppingCart />} title="Buy Cars" />
-               <Item icon={<RiScissors2Line />} title="Services" />
-               <Item icon={<RxCalendar />} title="Calender" />
-               <Item icon={<BiMessageDetail />} title="Messages" />
+               {sidebarData
+                  .filter(
+                     (label) =>
+                        label.title !== "Settings" && label.title !== "Log out"
+                  )
+                  .map((label, index) => (
+                     <Item icon={label.icon} title={label.title} key={index} />
+                  ))}
             </ul>
          </div>
          <ul>
-            <Item icon={<AiOutlineSetting />} title="Settings" />
-            <Item icon={<BiLogOut />} title="Log out" />
+            {sidebarData
+               .filter(
+                  (label) =>
+                     label.title === "Settings" || label.title === "Log out"
+               )
+               .map((label, index) => (
+                  <Item icon={label.icon} title={label.title} key={index} />
+               ))}
          </ul>
       </div>
    );
